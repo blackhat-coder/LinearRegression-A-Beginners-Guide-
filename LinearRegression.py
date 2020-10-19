@@ -6,6 +6,7 @@ class LinearRegression:
 
     @staticmethod
     def cost_function(self, theta, target, feautures):
+        # computes vectorized cost function
         self.theta = theta
         self.target = target
         self.feautures = feautures
@@ -18,7 +19,8 @@ class LinearRegression:
     
     @staticmethod
     def fit(self, X: "Feautures", Y: "Target"):
-
+        # computes the model parameters using normal equation method
+        
         model_fit = np.dot(np.linalg.pinv(np.dot(np.transpose(X) , X)) , np.dot(np.transpose(X) , Y))
 
         self.b = model_fit[0]
