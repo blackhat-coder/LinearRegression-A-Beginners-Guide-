@@ -2,14 +2,12 @@ import numpy as np
 import pandas as pd
 
 
-class LinearRegression:
-
-    @staticmethod
+class Linear_Regression:
     def cost_function(self, theta, target, feautures):
         # computes vectorized cost function
-        self.theta = theta
-        self.target = target
-        self.feautures = feautures
+        self._theta = theta
+        self._target = target
+        self._feautures = feautures
 
         m = len(target)
 
@@ -17,20 +15,19 @@ class LinearRegression:
 
         return cost / (2 * m)
     
-    @staticmethod
-    def fit(self, X: "Feautures", Y: "Target"):
+    def fit(self, X: 'feautures', Y:'target'):
         # computes the model parameters using normal equation method
         
-        model_fit = np.dot(np.linalg.pinv(np.dot(np.transpose(X) , X)) , np.dot(np.transpose(X) , Y))
+        self.model_fit = np.dot(np.linalg.pinv(np.dot(np.transpose(X) , X)) , np.dot(np.transpose(X) , Y))
 
-        self.b = model_fit[0]
+        self.b = self.model_fit[0]
 
-        self.w = model_fit[1:]
+        self.w = self.model_fit[1:]
 
-        return model_fit
+        return self.model_fit
     
     def predict(self, feautures):
-        return np.dot(feautures, self.fit())
+        return np.dot(feautures, self.model_fit)
 
     def __repr__(self):
-        print("Linear Model")
+        print("Linear Modell")
